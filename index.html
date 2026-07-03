@@ -2907,20 +2907,7 @@
         radial-gradient(circle at 50% 46%, rgba(255, 230, 174, 0.18), transparent 26%),
         radial-gradient(circle at 50% 112%, rgba(0, 0, 0, 0.38), transparent 38%),
         #260307;
-      animation: cinematicCurtainFade 6.2s cubic-bezier(.22, .72, .18, 1) forwards;
-    }
-
-    .page-curtain::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 50% 46%, rgba(255, 226, 156, 0.24), transparent 18%),
-        linear-gradient(90deg, transparent 0%, rgba(255, 236, 186, 0.12) 50%, transparent 100%);
-      opacity: 0;
-      animation: curtainRevealGlow 6.05s ease forwards;
+      animation: cinematicCurtainFade 5.6s cubic-bezier(.22, .75, .24, 1) forwards;
     }
 
     .curtain-panel {
@@ -2933,41 +2920,27 @@
       background:
         radial-gradient(ellipse at 50% -8%, rgba(255,255,255,0.22), transparent 26%),
         radial-gradient(ellipse at 50% 110%, rgba(0,0,0,0.42), transparent 34%),
-        repeating-linear-gradient(90deg,
-          rgba(255,255,255,0.08) 0 2px,
-          rgba(255,255,255,0.02) 2px 5px,
-          rgba(0,0,0,0.22) 6px 13px,
-          rgba(255,255,255,0.06) 14px 18px,
-          rgba(0,0,0,0.30) 19px 31px,
-          rgba(255,255,255,0.03) 32px 39px),
-        repeating-linear-gradient(0deg,
-          rgba(255,255,255,0.055) 0 1px,
-          transparent 1px 5px,
-          rgba(0,0,0,0.08) 6px 8px,
-          transparent 9px 14px),
         linear-gradient(90deg,
-          #120003 0%,
-          #7d0917 6%,
-          #260005 12%,
-          #bd2235 20%,
-          #43020b 29%,
-          #d2384b 37%,
-          #5a0611 45%,
-          #9b1425 53%,
-          #240006 63%,
-          #c6273b 72%,
-          #3d0109 82%,
-          #941224 91%,
-          #130003 100%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 12px),
+          #1b0105 0%,
+          #6e0613 5%,
+          #350007 10%,
+          #a41527 18%,
+          #4a020c 27%,
+          #c3283d 36%,
+          #5b0611 45%,
+          #8d1020 53%,
+          #2a0007 62%,
+          #b41d31 72%,
+          #43010b 82%,
+          #8c1021 91%,
+          #190005 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 19px),
         linear-gradient(180deg, #9d1728 0%, #c72e43 38%, #6a0714 100%);
       box-shadow:
-        inset 0 0 115px rgba(0,0,0,0.68),
-        inset 18px 0 42px rgba(255,255,255,0.08),
-        inset -24px 0 52px rgba(0,0,0,0.42),
+        inset 0 0 95px rgba(0,0,0,0.62),
         inset 0 0 24px rgba(255,255,255,0.10),
         0 0 70px rgba(0,0,0,0.32);
-      filter: saturate(1.12) contrast(1.08);
+      filter: saturate(1.08) contrast(1.04);
     }
 
     .curtain-panel::before,
@@ -2980,44 +2953,36 @@
 
     .curtain-panel::before {
       background:
-        radial-gradient(ellipse at 12% 42%, rgba(255,255,255,0.22), transparent 20%),
-        radial-gradient(ellipse at 68% 38%, rgba(255,255,255,0.16), transparent 23%),
-        radial-gradient(ellipse at 38% 75%, rgba(0,0,0,0.38), transparent 25%),
-        repeating-linear-gradient(93deg, rgba(255,255,255,0.12) 0 1px, transparent 1px 18px, rgba(0,0,0,0.12) 19px 22px, transparent 23px 36px),
-        repeating-linear-gradient(87deg, transparent 0 12px, rgba(0,0,0,0.34) 13px 28px, rgba(255,255,255,0.05) 29px 34px, transparent 35px 50px),
+        radial-gradient(ellipse at 12% 42%, rgba(255,255,255,0.18), transparent 19%),
+        radial-gradient(ellipse at 68% 38%, rgba(255,255,255,0.12), transparent 22%),
+        radial-gradient(ellipse at 38% 75%, rgba(0,0,0,0.34), transparent 24%),
+        repeating-linear-gradient(94deg, rgba(255,255,255,0.10) 0 1px, transparent 1px 31px),
+        repeating-linear-gradient(86deg, transparent 0 15px, rgba(0,0,0,0.30) 16px 31px, transparent 32px 51px),
         linear-gradient(180deg, rgba(255,255,255,0.18), transparent 24%, rgba(0,0,0,0.28) 100%);
-      mix-blend-mode: soft-light;
-      opacity: 0.95;
+      mix-blend-mode: overlay;
+      opacity: 0.88;
     }
 
     .curtain-panel::after {
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.28), transparent 22%),
-        linear-gradient(90deg, rgba(0,0,0,0.58), transparent 12%, rgba(255,255,255,0.10) 34%, transparent 52%, rgba(0,0,0,0.52) 86%, rgba(0,0,0,0.68)),
-        repeating-linear-gradient(90deg, transparent 0 20px, rgba(255,255,255,0.08) 21px 24px, transparent 25px 42px, rgba(0,0,0,0.16) 43px 54px, transparent 55px 82px),
-        repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 7px);
-      opacity: 0.96;
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.24), transparent 22%),
+        linear-gradient(90deg, rgba(0,0,0,0.48), transparent 13%, transparent 84%, rgba(0,0,0,0.48)),
+        repeating-linear-gradient(90deg, transparent 0 34px, rgba(255,255,255,0.045) 35px 38px, transparent 39px 76px);
+      opacity: 0.92;
     }
 
     .curtain-left {
       left: 0;
       clip-path: polygon(0 0, 100% 0, 91% 100%, 0 100%);
       transform-origin: left center;
-      animation: cinematicCurtainLeft 5.85s cubic-bezier(.18, .78, .2, 1) forwards;
+      animation: cinematicCurtainLeft 5.25s cubic-bezier(.15, .84, .18, 1) forwards;
     }
 
     .curtain-right {
       right: 0;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 9% 100%);
       transform-origin: right center;
-      animation: cinematicCurtainRight 5.9s cubic-bezier(.18, .78, .2, 1) 0.08s forwards;
-    }
-
-    @supports not (mix-blend-mode: soft-light) {
-      .curtain-panel::before {
-        mix-blend-mode: normal;
-        opacity: 0.5;
-      }
+      animation: cinematicCurtainRight 5.25s cubic-bezier(.15, .84, .18, 1) forwards;
     }
 
     .curtain-valance {
@@ -3028,15 +2993,13 @@
       height: min(120px, 17vh);
       background:
         radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.20), transparent 30%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.10) 0 2px, transparent 2px 16px, rgba(0,0,0,0.26) 17px 32px, transparent 33px 50px),
-        repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 6px),
-        repeating-linear-gradient(90deg, transparent 0 14px, rgba(0,0,0,0.34) 15px 31px, rgba(255,255,255,0.05) 32px 37px, transparent 38px 56px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(90deg, transparent 0 18px, rgba(0,0,0,0.24) 19px 32px, transparent 33px 52px),
         linear-gradient(180deg, #9f1728 0%, #5b0712 100%);
       box-shadow:
-        inset 0 -22px 42px rgba(0,0,0,0.46),
-        inset 0 10px 28px rgba(255,255,255,0.12),
+        inset 0 -18px 34px rgba(0,0,0,0.36),
         0 16px 34px rgba(0,0,0,0.22);
-      animation: cinematicValanceLift 5.95s cubic-bezier(.22, .72, .18, 1) forwards;
+      animation: cinematicValanceLift 5.3s cubic-bezier(.22, .75, .24, 1) forwards;
     }
 
     .curtain-seam {
@@ -3048,7 +3011,7 @@
       transform: translateX(-50%);
       background: linear-gradient(180deg, transparent, rgba(255, 226, 176, 0.58), transparent);
       box-shadow: 0 0 28px rgba(255, 220, 142, 0.46);
-      animation: cinematicSeamGlow 5.1s ease forwards;
+      animation: cinematicSeamGlow 4.2s ease forwards;
     }
 
     .curtain-emblem-stage {
@@ -3059,7 +3022,7 @@
       gap: 16px;
       color: #fff7df;
       text-align: center;
-      animation: cinematicEmblemReveal 5.45s cubic-bezier(.22, .72, .18, 1) forwards;
+      animation: cinematicEmblemReveal 4.75s cubic-bezier(.22, .75, .24, 1) forwards;
     }
 
     .curtain-emblem {
@@ -3102,52 +3065,38 @@
     }
 
     @keyframes cinematicCurtainFade {
-      0%, 86% { opacity: 1; visibility: visible; }
+      0%, 84% { opacity: 1; visibility: visible; }
       100% { opacity: 0; visibility: hidden; }
     }
 
     @keyframes cinematicCurtainLeft {
-      0%, 18% { transform: translateX(0) rotateY(0deg) scaleX(1); filter: brightness(1); }
-      36% { transform: translateX(-18%) rotateY(3deg) scaleX(1.03) skewX(-0.4deg); filter: brightness(0.98); }
-      58% { transform: translateX(-48%) rotateY(7deg) scaleX(1.08) skewX(-1.2deg); filter: brightness(0.92); }
-      78% { transform: translateX(-82%) rotateY(12deg) scaleX(1.12) skewX(-2deg); filter: brightness(0.82); }
-      100% { transform: translateX(-112%) rotateY(15deg) scaleX(1.14) skewX(-2.6deg); filter: brightness(0.70); }
+      0%, 24% { transform: translateX(0) rotateY(0deg) scaleX(1); filter: brightness(1); }
+      62% { transform: translateX(-54%) rotateY(9deg) scaleX(1.10) skewX(-2deg); filter: brightness(0.92); }
+      100% { transform: translateX(-108%) rotateY(15deg) scaleX(1.14) skewX(-3deg); filter: brightness(0.72); }
     }
 
     @keyframes cinematicCurtainRight {
-      0%, 18% { transform: translateX(0) rotateY(0deg) scaleX(1); filter: brightness(1); }
-      36% { transform: translateX(16%) rotateY(-3deg) scaleX(1.03) skewX(0.4deg); filter: brightness(0.98); }
-      58% { transform: translateX(46%) rotateY(-7deg) scaleX(1.08) skewX(1.2deg); filter: brightness(0.92); }
-      78% { transform: translateX(80%) rotateY(-12deg) scaleX(1.12) skewX(2deg); filter: brightness(0.82); }
-      100% { transform: translateX(112%) rotateY(-15deg) scaleX(1.14) skewX(2.6deg); filter: brightness(0.70); }
+      0%, 24% { transform: translateX(0) rotateY(0deg) scaleX(1); filter: brightness(1); }
+      62% { transform: translateX(54%) rotateY(-9deg) scaleX(1.10) skewX(2deg); filter: brightness(0.92); }
+      100% { transform: translateX(108%) rotateY(-15deg) scaleX(1.14) skewX(3deg); filter: brightness(0.72); }
     }
 
     @keyframes cinematicValanceLift {
-      0%, 58% { transform: translateY(0); opacity: 1; }
-      78% { transform: translateY(-32%); opacity: 0.86; }
-      100% { transform: translateY(-96%); opacity: 0; }
+      0%, 64% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-82%); opacity: 0; }
     }
 
     @keyframes cinematicSeamGlow {
-      0%, 22% { opacity: 0.16; transform: translateX(-50%) scaleY(0.65); }
-      42% { opacity: 1; transform: translateX(-50%) scaleY(1); }
-      72% { opacity: 0.5; transform: translateX(-50%) scaleY(1.1); }
-      100% { opacity: 0; transform: translateX(-50%) scaleY(1.18); }
+      0%, 26% { opacity: 0.16; transform: translateX(-50%) scaleY(0.65); }
+      48% { opacity: 1; transform: translateX(-50%) scaleY(1); }
+      100% { opacity: 0; transform: translateX(-50%) scaleY(1.12); }
     }
 
     @keyframes cinematicEmblemReveal {
       0% { opacity: 0; transform: translateY(22px) scale(0.88); filter: blur(8px); }
-      16%, 50% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-      68% { opacity: 0.82; transform: translateY(-8px) scale(0.98); filter: blur(0.5px); }
-      88% { opacity: 0.28; transform: translateY(-26px) scale(0.9); filter: blur(3px); }
-      100% { opacity: 0; transform: translateY(-44px) scale(0.8); filter: blur(7px); }
-    }
-
-    @keyframes curtainRevealGlow {
-      0%, 28% { opacity: 0; transform: scaleX(0.12); }
-      52% { opacity: 0.58; transform: scaleX(0.34); }
-      78% { opacity: 0.42; transform: scaleX(0.72); }
-      100% { opacity: 0; transform: scaleX(1.08); }
+      18%, 58% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+      82% { opacity: 0.72; transform: translateY(-16px) scale(0.96); filter: blur(1px); }
+      100% { opacity: 0; transform: translateY(-44px) scale(0.78); filter: blur(6px); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -3540,7 +3489,7 @@
 
       setTimeout(() => {
         pageCurtain.remove();
-      }, 6900);
+      }, 6200);
     }
 
     const weddingDate = new Date('2026-08-16T09:00:00-04:00').getTime();
