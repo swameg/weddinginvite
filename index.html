@@ -1804,7 +1804,7 @@
       inset: 0;
       background: rgba(31, 41, 51, 0.58);
       backdrop-filter: blur(8px);
-      z-index: 999;
+      z-index: 4000;
       display: none;
       align-items: center;
       justify-content: center;
@@ -1813,6 +1813,53 @@
 
     .modal-overlay.show {
       display: flex;
+    }
+
+    .rsvp-modal-overlay {
+      align-items: flex-start;
+      overflow-y: auto;
+      padding: clamp(14px, 3vw, 28px);
+    }
+
+    .rsvp-modal-panel {
+      width: min(860px, 100%);
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      position: relative;
+      border-radius: 28px;
+      animation: modalPop 0.35s ease both;
+    }
+
+    .rsvp-modal-panel .section-heading {
+      margin: 0 0 18px;
+      padding: 30px 60px 0;
+    }
+
+    .rsvp-modal-panel .rsvp-form {
+      margin: 0;
+      max-width: none;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(165, 22, 38, 0.22);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--maroon);
+      font-size: 1.45rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(77, 7, 16, 0.16);
+    }
+
+    .modal-close:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(77, 7, 16, 0.20);
     }
 
     .success-modal {
@@ -2102,6 +2149,26 @@
       .rsvp-form {
         padding: 24px 18px;
         border-radius: 24px;
+      }
+
+      .rsvp-modal-overlay {
+        padding: 10px;
+      }
+
+      .rsvp-modal-panel {
+        width: 100%;
+        max-height: calc(100vh - 20px);
+        border-radius: 24px;
+      }
+
+      .rsvp-modal-panel .section-heading {
+        padding: 58px 18px 0;
+        margin-bottom: 14px;
+      }
+
+      .modal-close {
+        top: 12px;
+        right: 12px;
       }
 
       .rsvp-form .btn[type="submit"] {
@@ -3116,14 +3183,16 @@
 
   
 
-  <section id="rsvp" class="reveal">
+  <section id="rsvp" class="modal-overlay rsvp-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
+    <div class="rsvp-modal-panel">
+      <button class="modal-close" type="button" id="closeRsvpModal" aria-label="Close RSVP form">&times;</button>
     <div class="section-heading">
-      <h2>RSVP</h2>
+      <h2 id="rsvpTitle">RSVP</h2>
       <p>Please confirm your attendance using the form below.</p>
       <div class="ornament"></div>
     </div>
 
-    <form class="rsvp-form reveal" id="rsvpForm">
+    <form class="rsvp-form" id="rsvpForm">
       <div class="form-row">
         <div>
           <label for="name">Full Name</label>
@@ -3210,6 +3279,7 @@
       <button class="btn btn-primary" type="submit">Submit RSVP</button>
       <div class="success-message" id="successMessage">Thank you! Your RSVP has been recorded.</div>
     </form>
+    </div>
   </section>
 
   <a href="#rsvp" class="btn btn-primary floating-rsvp">RSVP</a>
@@ -3339,18 +3409,10 @@
     timelineItems.forEach((item) => revealObserver.observe(item));
     revealItems.forEach((item) => revealObserver.observe(item));
 
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener('click', function (event) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-
-        event.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxFaDBlim9ZFq5IwHgTwlQdVIFwpc2FeBnarI5bqXn6ghh2h4jlVs4JuQFGQKXxBp_Krw/exec';
 
+    const rsvpModal = document.getElementById('rsvp');
+    const closeRsvpModal = document.getElementById('closeRsvpModal');
     const form = document.getElementById('rsvpForm');
     const successMessage = document.getElementById('successMessage');
     const successModal = document.getElementById('successModal');
@@ -3361,6 +3423,49 @@
     const actualEventCheckboxes = document.querySelectorAll('input[data-event-option="event"]');
     const notSureEventCheckbox = document.getElementById('notSureEvent');
     const eventsHiddenInput = document.getElementById('events_attending');
+
+    function openRsvpModal() {
+      rsvpModal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        document.getElementById('name').focus();
+      }, 50);
+    }
+
+    function closeRsvpDialog() {
+      rsvpModal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', function (event) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+
+        event.preventDefault();
+
+        if (target === rsvpModal) {
+          openRsvpModal();
+          return;
+        }
+
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    closeRsvpModal.addEventListener('click', closeRsvpDialog);
+
+    rsvpModal.addEventListener('click', function (event) {
+      if (event.target === rsvpModal) {
+        closeRsvpDialog();
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && rsvpModal.classList.contains('show')) {
+        closeRsvpDialog();
+      }
+    });
 
     function updateSelectedEvents() {
       let selectedEvents = [];
@@ -3452,6 +3557,7 @@
 
         successMessage.style.display = 'block';
         successMessage.textContent = 'Thank you! Your RSVP has been submitted successfully.';
+        closeRsvpDialog();
         successModal.classList.add('show');
 
         form.reset();
@@ -3470,6 +3576,7 @@
 
     function runInternalTests() {
       console.assert(typeof updateCountdown === 'function', 'Countdown function exists');
+      console.assert(document.getElementById('rsvp'), 'RSVP modal exists');
       console.assert(document.getElementById('rsvpForm'), 'RSVP form exists');
       console.assert(document.getElementById('successModal'), 'Success modal exists');
       console.assert(document.getElementById('loadingModal'), 'Loading modal exists');
