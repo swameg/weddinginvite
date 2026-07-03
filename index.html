@@ -2933,27 +2933,41 @@
       background:
         radial-gradient(ellipse at 50% -8%, rgba(255,255,255,0.22), transparent 26%),
         radial-gradient(ellipse at 50% 110%, rgba(0,0,0,0.42), transparent 34%),
+        repeating-linear-gradient(90deg,
+          rgba(255,255,255,0.08) 0 2px,
+          rgba(255,255,255,0.02) 2px 5px,
+          rgba(0,0,0,0.22) 6px 13px,
+          rgba(255,255,255,0.06) 14px 18px,
+          rgba(0,0,0,0.30) 19px 31px,
+          rgba(255,255,255,0.03) 32px 39px),
+        repeating-linear-gradient(0deg,
+          rgba(255,255,255,0.055) 0 1px,
+          transparent 1px 5px,
+          rgba(0,0,0,0.08) 6px 8px,
+          transparent 9px 14px),
         linear-gradient(90deg,
-          #1b0105 0%,
-          #6e0613 5%,
-          #350007 10%,
-          #a41527 18%,
-          #4a020c 27%,
-          #c3283d 36%,
-          #5b0611 45%,
-          #8d1020 53%,
-          #2a0007 62%,
-          #b41d31 72%,
-          #43010b 82%,
-          #8c1021 91%,
-          #190005 100%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 1px, transparent 1px 19px),
+          #120003 0%,
+          #7d0917 6%,
+          #260005 12%,
+          #bd2235 20%,
+          #43020b 29%,
+          #d2384b 37%,
+          #5a0611 45%,
+          #9b1425 53%,
+          #240006 63%,
+          #c6273b 72%,
+          #3d0109 82%,
+          #941224 91%,
+          #130003 100%),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 12px),
         linear-gradient(180deg, #9d1728 0%, #c72e43 38%, #6a0714 100%);
       box-shadow:
-        inset 0 0 95px rgba(0,0,0,0.62),
+        inset 0 0 115px rgba(0,0,0,0.68),
+        inset 18px 0 42px rgba(255,255,255,0.08),
+        inset -24px 0 52px rgba(0,0,0,0.42),
         inset 0 0 24px rgba(255,255,255,0.10),
         0 0 70px rgba(0,0,0,0.32);
-      filter: saturate(1.08) contrast(1.04);
+      filter: saturate(1.12) contrast(1.08);
     }
 
     .curtain-panel::before,
@@ -2966,22 +2980,23 @@
 
     .curtain-panel::before {
       background:
-        radial-gradient(ellipse at 12% 42%, rgba(255,255,255,0.18), transparent 19%),
-        radial-gradient(ellipse at 68% 38%, rgba(255,255,255,0.12), transparent 22%),
-        radial-gradient(ellipse at 38% 75%, rgba(0,0,0,0.34), transparent 24%),
-        repeating-linear-gradient(94deg, rgba(255,255,255,0.10) 0 1px, transparent 1px 31px),
-        repeating-linear-gradient(86deg, transparent 0 15px, rgba(0,0,0,0.30) 16px 31px, transparent 32px 51px),
+        radial-gradient(ellipse at 12% 42%, rgba(255,255,255,0.22), transparent 20%),
+        radial-gradient(ellipse at 68% 38%, rgba(255,255,255,0.16), transparent 23%),
+        radial-gradient(ellipse at 38% 75%, rgba(0,0,0,0.38), transparent 25%),
+        repeating-linear-gradient(93deg, rgba(255,255,255,0.12) 0 1px, transparent 1px 18px, rgba(0,0,0,0.12) 19px 22px, transparent 23px 36px),
+        repeating-linear-gradient(87deg, transparent 0 12px, rgba(0,0,0,0.34) 13px 28px, rgba(255,255,255,0.05) 29px 34px, transparent 35px 50px),
         linear-gradient(180deg, rgba(255,255,255,0.18), transparent 24%, rgba(0,0,0,0.28) 100%);
-      mix-blend-mode: overlay;
-      opacity: 0.88;
+      mix-blend-mode: soft-light;
+      opacity: 0.95;
     }
 
     .curtain-panel::after {
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.24), transparent 22%),
-        linear-gradient(90deg, rgba(0,0,0,0.48), transparent 13%, transparent 84%, rgba(0,0,0,0.48)),
-        repeating-linear-gradient(90deg, transparent 0 34px, rgba(255,255,255,0.045) 35px 38px, transparent 39px 76px);
-      opacity: 0.92;
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.28), transparent 22%),
+        linear-gradient(90deg, rgba(0,0,0,0.58), transparent 12%, rgba(255,255,255,0.10) 34%, transparent 52%, rgba(0,0,0,0.52) 86%, rgba(0,0,0,0.68)),
+        repeating-linear-gradient(90deg, transparent 0 20px, rgba(255,255,255,0.08) 21px 24px, transparent 25px 42px, rgba(0,0,0,0.16) 43px 54px, transparent 55px 82px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.035) 0 1px, transparent 1px 7px);
+      opacity: 0.96;
     }
 
     .curtain-left {
@@ -2998,6 +3013,13 @@
       animation: cinematicCurtainRight 5.9s cubic-bezier(.18, .78, .2, 1) 0.08s forwards;
     }
 
+    @supports not (mix-blend-mode: soft-light) {
+      .curtain-panel::before {
+        mix-blend-mode: normal;
+        opacity: 0.5;
+      }
+    }
+
     .curtain-valance {
       position: absolute;
       top: 0;
@@ -3006,11 +3028,13 @@
       height: min(120px, 17vh);
       background:
         radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.20), transparent 30%),
-        repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 24px),
-        repeating-linear-gradient(90deg, transparent 0 18px, rgba(0,0,0,0.24) 19px 32px, transparent 33px 52px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.10) 0 2px, transparent 2px 16px, rgba(0,0,0,0.26) 17px 32px, transparent 33px 50px),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 6px),
+        repeating-linear-gradient(90deg, transparent 0 14px, rgba(0,0,0,0.34) 15px 31px, rgba(255,255,255,0.05) 32px 37px, transparent 38px 56px),
         linear-gradient(180deg, #9f1728 0%, #5b0712 100%);
       box-shadow:
-        inset 0 -18px 34px rgba(0,0,0,0.36),
+        inset 0 -22px 42px rgba(0,0,0,0.46),
+        inset 0 10px 28px rgba(255,255,255,0.12),
         0 16px 34px rgba(0,0,0,0.22);
       animation: cinematicValanceLift 5.95s cubic-bezier(.22, .72, .18, 1) forwards;
     }
