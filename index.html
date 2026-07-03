@@ -2904,9 +2904,9 @@
       overflow: hidden;
       perspective: 1600px;
       background:
-        radial-gradient(circle at 50% 46%, rgba(255, 230, 174, 0.18), transparent 26%),
-        radial-gradient(circle at 50% 112%, rgba(0, 0, 0, 0.38), transparent 38%),
-        #260307;
+        radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.96) 0 34%, rgba(255, 246, 232, 0.78) 48%, transparent 62%),
+        radial-gradient(circle at 50% 112%, rgba(0, 0, 0, 0.32), transparent 38%),
+        linear-gradient(90deg, #2a0207 0%, #fffaf3 26%, #fffaf3 74%, #2a0207 100%);
       animation: cinematicCurtainFade 6.2s cubic-bezier(.22, .72, .18, 1) forwards;
     }
 
@@ -2927,7 +2927,7 @@
       position: absolute;
       top: -6%;
       bottom: -10%;
-      width: 54.5%;
+      width: 53%;
       overflow: hidden;
       will-change: transform, filter;
       background:
@@ -3001,16 +3001,66 @@
 
     .curtain-left {
       left: 0;
-      clip-path: polygon(0 0, 100% 0, 91% 100%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 82% 22%, 70% 42%, 55% 62%, 36% 82%, 18% 100%, 0 100%);
+      border-radius: 0 0 42% 0;
       transform-origin: left center;
       animation: cinematicCurtainLeft 5.85s cubic-bezier(.18, .78, .2, 1) forwards;
     }
 
     .curtain-right {
       right: 0;
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 9% 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 82% 100%, 64% 82%, 45% 62%, 30% 42%, 18% 22%);
+      border-radius: 0 0 0 42%;
       transform-origin: right center;
       animation: cinematicCurtainRight 5.9s cubic-bezier(.18, .78, .2, 1) 0.08s forwards;
+    }
+
+    .curtain-tie {
+      position: absolute;
+      z-index: 4;
+      top: 52%;
+      width: clamp(86px, 13vw, 150px);
+      height: 18px;
+      border-radius: 999px;
+      background:
+        repeating-linear-gradient(135deg, #5d3306 0 6px, #f7d570 7px 12px, #9a6419 13px 18px, #fff0a8 19px 24px);
+      box-shadow:
+        0 6px 14px rgba(0,0,0,0.34),
+        inset 0 2px 4px rgba(255,255,255,0.38),
+        inset 0 -3px 5px rgba(66,35,5,0.38);
+      opacity: 0;
+      animation: curtainTieReveal 5.7s cubic-bezier(.18, .78, .2, 1) forwards;
+    }
+
+    .curtain-tie::before,
+    .curtain-tie::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 34% 30%, #fff2a8, #d59a31 48%, #6b3807 100%);
+      box-shadow: 0 4px 9px rgba(0,0,0,0.28);
+      transform: translateY(-50%);
+    }
+
+    .curtain-tie::before {
+      left: -9px;
+    }
+
+    .curtain-tie::after {
+      right: -9px;
+    }
+
+    .curtain-tie-left {
+      left: -18px;
+      transform: rotate(24deg);
+    }
+
+    .curtain-tie-right {
+      right: -18px;
+      transform: rotate(-24deg);
     }
 
     @supports not (mix-blend-mode: soft-light) {
@@ -3027,7 +3077,12 @@
       right: 0;
       height: min(120px, 17vh);
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.20), transparent 30%),
+        radial-gradient(ellipse at 16% 0%, rgba(255,255,255,0.24), transparent 36%),
+        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.28), transparent 38%),
+        radial-gradient(ellipse at 84% 0%, rgba(255,255,255,0.24), transparent 36%),
+        radial-gradient(ellipse at 16% 100%, #f31828 0 28%, #a90c1a 47%, transparent 49%),
+        radial-gradient(ellipse at 50% 100%, #f51f2f 0 32%, #a90c1a 52%, transparent 54%),
+        radial-gradient(ellipse at 84% 100%, #f31828 0 28%, #a90c1a 47%, transparent 49%),
         repeating-linear-gradient(90deg, rgba(255,255,255,0.10) 0 2px, transparent 2px 16px, rgba(0,0,0,0.26) 17px 32px, transparent 33px 50px),
         repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 6px),
         repeating-linear-gradient(90deg, transparent 0 14px, rgba(0,0,0,0.34) 15px 31px, rgba(255,255,255,0.05) 32px 37px, transparent 38px 56px),
@@ -3037,6 +3092,23 @@
         inset 0 10px 28px rgba(255,255,255,0.12),
         0 16px 34px rgba(0,0,0,0.22);
       animation: cinematicValanceLift 5.95s cubic-bezier(.22, .72, .18, 1) forwards;
+    }
+
+    .curtain-valance::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -34px;
+      height: min(92px, 12vh);
+      background:
+        radial-gradient(ellipse at 16% 0%, transparent 0 42%, rgba(0,0,0,0.28) 43%, transparent 47%),
+        radial-gradient(ellipse at 16% 0%, #f61d2d 0 45%, #9b0715 67%, transparent 69%),
+        radial-gradient(ellipse at 50% 0%, transparent 0 45%, rgba(0,0,0,0.26) 46%, transparent 50%),
+        radial-gradient(ellipse at 50% 0%, #ff2232 0 50%, #990614 70%, transparent 72%),
+        radial-gradient(ellipse at 84% 0%, transparent 0 42%, rgba(0,0,0,0.28) 43%, transparent 47%),
+        radial-gradient(ellipse at 84% 0%, #f61d2d 0 45%, #9b0715 67%, transparent 69%);
+      filter: drop-shadow(0 13px 12px rgba(60, 0, 8, 0.36));
     }
 
     .curtain-seam {
@@ -3150,6 +3222,13 @@
       100% { opacity: 0; transform: scaleX(1.08); }
     }
 
+    @keyframes curtainTieReveal {
+      0%, 34% { opacity: 0; filter: blur(3px); }
+      58% { opacity: 0.95; filter: blur(0); }
+      86% { opacity: 0.95; filter: blur(0); }
+      100% { opacity: 0; filter: blur(2px); }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .page-curtain,
       .sparkle-layer {
@@ -3182,6 +3261,8 @@
     <div class="curtain-valance"></div>
     <div class="curtain-panel curtain-left"></div>
     <div class="curtain-panel curtain-right"></div>
+    <div class="curtain-tie curtain-tie-left"></div>
+    <div class="curtain-tie curtain-tie-right"></div>
     <div class="curtain-seam"></div>
     <div class="curtain-emblem-stage">
       <div class="curtain-emblem">
