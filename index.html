@@ -1616,8 +1616,11 @@
     }
 
     .rsvp-form {
-      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,250,246,0.98));
-      padding: 26px 30px 0;
+      background: var(--card);
+      padding: 34px;
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 54px rgba(77, 7, 16, 0.14);
       max-width: 780px;
       margin: auto;
       backdrop-filter: blur(12px);
@@ -1764,16 +1767,15 @@
 
     .event-options {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
     }
 
     .event-choice {
       display: flex;
       align-items: center;
       gap: 10px;
-      min-height: 58px;
       padding: 13px 14px;
       border: 1px solid rgba(201,154,54,0.28);
       border-radius: 16px;
@@ -1782,7 +1784,6 @@
       font-weight: 700;
       cursor: pointer;
       transition: 0.25s ease;
-      margin: 0;
     }
 
     .event-choice:hover {
@@ -1796,13 +1797,6 @@
       width: auto;
       margin: 0;
       accent-color: var(--maroon);
-      flex: 0 0 auto;
-    }
-
-    .event-choice.is-selected {
-      border-color: rgba(165, 22, 38, 0.58);
-      background: linear-gradient(135deg, rgba(255,241,242,0.98), rgba(255,248,229,0.98));
-      box-shadow: inset 0 0 0 1px rgba(165, 22, 38, 0.14), 0 10px 22px rgba(77, 7, 16, 0.08);
     }
 
     .modal-overlay {
@@ -1810,7 +1804,7 @@
       inset: 0;
       background: rgba(31, 41, 51, 0.58);
       backdrop-filter: blur(8px);
-      z-index: 4000;
+      z-index: 999;
       display: none;
       align-items: center;
       justify-content: center;
@@ -1819,124 +1813,6 @@
 
     .modal-overlay.show {
       display: flex;
-    }
-
-    .rsvp-modal-overlay {
-      align-items: flex-start;
-      overflow-y: auto;
-      padding: clamp(18px, 3vw, 34px);
-    }
-
-    .rsvp-modal-panel {
-      width: min(920px, 100%);
-      max-height: calc(100vh - 48px);
-      overflow-y: auto;
-      position: relative;
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.98);
-      border: 1px solid rgba(165, 22, 38, 0.18);
-      box-shadow: 0 30px 90px rgba(77, 7, 16, 0.28);
-      animation: modalPop 0.35s ease both;
-    }
-
-    .rsvp-modal-header {
-      position: relative;
-      padding: 34px 72px 24px;
-      text-align: center;
-      background:
-        radial-gradient(circle at 18% 20%, rgba(247, 221, 176, 0.36), transparent 28%),
-        radial-gradient(circle at 82% 0%, rgba(255, 241, 242, 0.96), transparent 30%),
-        linear-gradient(135deg, rgba(255, 250, 244, 0.98), rgba(255, 239, 227, 0.96));
-      border-bottom: 1px solid rgba(165, 22, 38, 0.12);
-    }
-
-    .rsvp-modal-header .section-heading {
-      margin: 0;
-    }
-
-    .rsvp-modal-header .section-heading h2 {
-      font-size: clamp(2.35rem, 5vw, 3.4rem);
-      line-height: 1;
-    }
-
-    .rsvp-modal-note {
-      width: fit-content;
-      max-width: 100%;
-      margin: 16px auto 0;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid rgba(201, 154, 69, 0.28);
-      color: var(--maroon-dark);
-      font-size: 0.88rem;
-      font-weight: 800;
-    }
-
-    .rsvp-modal-panel .rsvp-form {
-      margin: 0;
-      max-width: none;
-    }
-
-    .rsvp-form-section {
-      padding: 18px 0 2px;
-      border-top: 1px solid rgba(165, 22, 38, 0.10);
-    }
-
-    .rsvp-form-section:first-child {
-      border-top: 0;
-      padding-top: 0;
-    }
-
-    .field-label {
-      display: block;
-      font-size: 0.76rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--maroon-dark);
-      opacity: 0.9;
-      margin-bottom: 8px;
-    }
-
-    .rsvp-actions {
-      position: sticky;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin: 22px -30px 0;
-      padding: 18px 30px;
-      background: linear-gradient(180deg, rgba(255,250,246,0.88), rgba(255,255,255,0.98) 35%);
-      border-top: 1px solid rgba(165, 22, 38, 0.12);
-      backdrop-filter: blur(14px);
-    }
-
-    .rsvp-actions p {
-      color: var(--muted);
-      font-size: 0.92rem;
-      margin: 0;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      z-index: 2;
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(165, 22, 38, 0.22);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--maroon);
-      font-size: 1.45rem;
-      line-height: 1;
-      cursor: pointer;
-      box-shadow: 0 12px 26px rgba(77, 7, 16, 0.16);
-    }
-
-    .modal-close:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 32px rgba(77, 7, 16, 0.20);
     }
 
     .success-modal {
@@ -2224,54 +2100,8 @@
       }
 
       .rsvp-form {
-        padding: 20px 16px 0;
-      }
-
-      .rsvp-modal-overlay {
-        padding: 8px;
-      }
-
-      .rsvp-modal-panel {
-        width: 100%;
-        max-height: calc(100vh - 16px);
-        border-radius: 22px;
-      }
-
-      .rsvp-modal-header {
-        padding: 58px 18px 20px;
-      }
-
-      .rsvp-modal-header .section-heading h2 {
-        font-size: 2.45rem;
-      }
-
-      .rsvp-modal-note {
-        width: 100%;
-        border-radius: 14px;
-        font-size: 0.8rem;
-      }
-
-      .event-choice {
-        min-height: 52px;
-        padding: 12px 13px;
-      }
-
-      .modal-close {
-        top: 12px;
-        right: 12px;
-      }
-
-      .rsvp-actions {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-        margin: 18px -16px 0;
-        padding: 14px 16px 16px;
-      }
-
-      .rsvp-actions p {
-        text-align: center;
-        font-size: 0.84rem;
+        padding: 24px 18px;
+        border-radius: 24px;
       }
 
       .rsvp-form .btn[type="submit"] {
@@ -3289,20 +3119,14 @@
 
   
 
-  <section id="rsvp" class="modal-overlay rsvp-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
-    <div class="rsvp-modal-panel">
-      <button class="modal-close" type="button" id="closeRsvpModal" aria-label="Close RSVP form">&times;</button>
-      <div class="rsvp-modal-header">
-        <div class="section-heading">
-          <h2 id="rsvpTitle">RSVP</h2>
-          <p>Please confirm your attendance using the form below.</p>
-          <div class="ornament"></div>
-        </div>
-        <div class="rsvp-modal-note">August 16, 2026 · Sterling, Virginia</div>
-      </div>
+  <section id="rsvp" class="reveal">
+    <div class="section-heading">
+      <h2>RSVP</h2>
+      <p>Please confirm your attendance using the form below.</p>
+      <div class="ornament"></div>
+    </div>
 
-    <form class="rsvp-form" id="rsvpForm">
-      <div class="rsvp-form-section">
+    <form class="rsvp-form reveal" id="rsvpForm">
       <div class="form-row">
         <div>
           <label for="name">Full Name</label>
@@ -3316,9 +3140,7 @@
 
       <label for="email">Email</label>
       <input type="email" id="email" name="email" placeholder="Your email address" required />
-      </div>
 
-      <div class="rsvp-form-section">
       <div class="form-row">
         <div>
           <label for="attendance">Will you attend?</label>
@@ -3355,10 +3177,8 @@
           </select>
         </div>
       </div>
-      </div>
 
-      <div class="rsvp-form-section">
-      <span class="field-label">Which events will you attend?</span>
+      <label>Which events will you attend?</label>
       <div class="event-options">
         <label class="event-choice">
           <input type="checkbox" id="allEvents" value="All Events" />
@@ -3386,20 +3206,13 @@
         </label>
       </div>
       <input type="hidden" id="events_attending" name="events_attending" required />
-      </div>
 
-      <div class="rsvp-form-section">
       <label for="message">Message for the couple</label>
       <textarea id="message" name="message" placeholder="Please mention anything we should know."></textarea>
-      </div>
 
-      <div class="rsvp-actions">
-        <p>Your response helps us plan seating, food, and event arrangements.</p>
       <button class="btn btn-primary" type="submit">Submit RSVP</button>
-      </div>
       <div class="success-message" id="successMessage">Thank you! Your RSVP has been recorded.</div>
     </form>
-    </div>
   </section>
 
   <a href="#rsvp" class="btn btn-primary floating-rsvp">RSVP</a>
@@ -3529,10 +3342,18 @@
     timelineItems.forEach((item) => revealObserver.observe(item));
     revealItems.forEach((item) => revealObserver.observe(item));
 
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+      link.addEventListener('click', function (event) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+
+        event.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxFaDBlim9ZFq5IwHgTwlQdVIFwpc2FeBnarI5bqXn6ghh2h4jlVs4JuQFGQKXxBp_Krw/exec';
 
-    const rsvpModal = document.getElementById('rsvp');
-    const closeRsvpModal = document.getElementById('closeRsvpModal');
     const form = document.getElementById('rsvpForm');
     const successMessage = document.getElementById('successMessage');
     const successModal = document.getElementById('successModal');
@@ -3543,49 +3364,6 @@
     const actualEventCheckboxes = document.querySelectorAll('input[data-event-option="event"]');
     const notSureEventCheckbox = document.getElementById('notSureEvent');
     const eventsHiddenInput = document.getElementById('events_attending');
-
-    function openRsvpModal() {
-      rsvpModal.classList.add('show');
-      document.body.style.overflow = 'hidden';
-      setTimeout(() => {
-        document.getElementById('name').focus();
-      }, 50);
-    }
-
-    function closeRsvpDialog() {
-      rsvpModal.classList.remove('show');
-      document.body.style.overflow = '';
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach((link) => {
-      link.addEventListener('click', function (event) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-
-        event.preventDefault();
-
-        if (target === rsvpModal) {
-          openRsvpModal();
-          return;
-        }
-
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-
-    closeRsvpModal.addEventListener('click', closeRsvpDialog);
-
-    rsvpModal.addEventListener('click', function (event) {
-      if (event.target === rsvpModal) {
-        closeRsvpDialog();
-      }
-    });
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && rsvpModal.classList.contains('show')) {
-        closeRsvpDialog();
-      }
-    });
 
     function updateSelectedEvents() {
       let selectedEvents = [];
@@ -3603,11 +3381,6 @@
           .filter((checkbox) => checkbox.checked)
           .map((checkbox) => checkbox.value);
       }
-
-      eventCheckboxes.forEach((checkbox) => {
-        checkbox.closest('.event-choice')?.classList.toggle('is-selected', checkbox.checked);
-      });
-      allEventsCheckbox.closest('.event-choice')?.classList.toggle('is-selected', allEventsCheckbox.checked);
 
       eventsHiddenInput.value = selectedEvents.join(', ');
     }
@@ -3682,13 +3455,12 @@
 
         successMessage.style.display = 'block';
         successMessage.textContent = 'Thank you! Your RSVP has been submitted successfully.';
-        closeRsvpDialog();
         successModal.classList.add('show');
 
         form.reset();
         allEventsCheckbox.checked = false;
         eventCheckboxes.forEach((checkbox) => checkbox.checked = false);
-        updateSelectedEvents();
+        eventsHiddenInput.value = '';
       } catch (error) {
         alert('Sorry, something went wrong while submitting your RSVP.');
         console.error(error);
@@ -3701,7 +3473,6 @@
 
     function runInternalTests() {
       console.assert(typeof updateCountdown === 'function', 'Countdown function exists');
-      console.assert(document.getElementById('rsvp'), 'RSVP modal exists');
       console.assert(document.getElementById('rsvpForm'), 'RSVP form exists');
       console.assert(document.getElementById('successModal'), 'Success modal exists');
       console.assert(document.getElementById('loadingModal'), 'Loading modal exists');
